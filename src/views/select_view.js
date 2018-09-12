@@ -15,7 +15,7 @@ SelectView.prototype.bindEvent = function() {
   })
 
   this.element.addEventListener('change', e => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     PubSub.publish('SelectView:selected', e.target.value);
   })
 }

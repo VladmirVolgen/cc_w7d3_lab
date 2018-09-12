@@ -12,10 +12,20 @@ Countries.prototype.bindEvent = function () {
     // console.log(this.countries);
     PubSub.publish('Countries:all', this.countryNames())
   })
+
+  PubSub.subscribe('SelectView:selected', e => {
+    // console.log(e.detail);
+    // console.log(this.countryDetails(e.detail));
+    PubSub.publish('Countries:country-details', this.countryDetails(e.detail))
+  })
 }
 
 Countries.prototype.countryNames = function () {
   return this.countries.map(country => country.name);
+}
+
+Countries.prototype.countryDetails = function (index) {
+  return this.countries[index]
 }
 
 module.exports = Countries;
