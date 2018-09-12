@@ -7,7 +7,11 @@ const SelectView = function (element) {
 
 SelectView.prototype.bindEvent = function() {
   PubSub.subscribe('Countries:all', e => {
-    console.log(e.detail);
+    // console.log(e.detail);
+    e.detail.forEach((country, index) => {
+      let option = createAndAppend('option', country, this.element);
+      option.value = index;
+    })
   })
 }
 

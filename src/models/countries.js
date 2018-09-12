@@ -10,8 +10,12 @@ Countries.prototype.bindEvent = function () {
   request.get(data => {
     this.countries = data;
     // console.log(this.countries);
-    PubSub.publish('Countries:all', this.countries)
+    PubSub.publish('Countries:all', this.countryNames())
   })
+}
+
+Countries.prototype.countryNames = function () {
+  return this.countries.map(country => country.name);
 }
 
 module.exports = Countries;
