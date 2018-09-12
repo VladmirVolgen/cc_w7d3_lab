@@ -13,6 +13,11 @@ SelectView.prototype.bindEvent = function() {
       option.value = index;
     })
   })
+
+  this.element.addEventListener('change', e => {
+    console.log(e.target.value);
+    PubSub.publish('SelectView:selected', e.target.value);
+  })
 }
 
 
